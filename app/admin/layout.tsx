@@ -1,0 +1,5 @@
+import Link from 'next/link'
+import { redirect } from 'next/navigation'
+import { requireAdmin } from '@/lib/supabase/server'
+import { logoutAdmin } from './actions'
+export default async function ProtectedAdminLayout({ children }: { children: React.ReactNode }) { const { user, isAdmin } = await requireAdmin(); if (!user || !isAdmin) redirect('/admin/login'); return <div className="admin-layout"><aside className="admin-nav"><Link className="brand" href="/admin"><b>K.</b><span>KRTAS Admin</span></Link><nav><Link href="/admin">Ringkasan</Link><Link href="/admin/permintaan">Permintaan</Link><Link href="/admin/layanan">Layanan</Link><Link href="/admin/konten">Portofolio & testimoni</Link><Link href="/admin/pengaturan">Pengaturan</Link></nav><form action={logoutAdmin}><button className="nav-logout">Keluar</button></form></aside><div className="admin-main"><header className="admin-top"><span>{user.email}</span><form action={logoutAdmin}><button className="pill" type="submit">Keluar</button></form></header>{children}</div></div> }

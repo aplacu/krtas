@@ -1,0 +1,4 @@
+-- Schema ini telah diterapkan melalui Supabase MCP sebagai create_krtas_schema.
+-- Sumber migrasi mencakup tabel admins, services, inquiries, inquiry_notes,
+-- portfolio_items, testimonials, settings, seed 4 layanan KRTAS, indexes, dan RLS.
+-- Jalankan SQL yang sama dari migrasi MCP bila menyiapkan project Supabase baru.
